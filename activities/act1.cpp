@@ -31,15 +31,15 @@ int main (int argc, char *argv[]) {
     input_file.close();
     n = i;
 
-    std::clock_t begin = clock();
+    auto begin = std::chrono::steady_clock::now();
     // Calculamos la suma
     for (int i = 0; i < n; i++){
         sum += DATA[i];
     }
-    std::clock_t end = clock();
-    double elapsed_secs = double(end - begin) /CLOCKS_PER_SEC;
+    auto end = std::chrono::steady_clock::now();
+    double elapsed_secs = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
     // Imprimimos los resultados
     std::cout << "La suma es: " << sum << std::endl;
-    std::cout << "Tiempo en segundos: " << elapsed_secs << std::endl;
+    std::cout << "Tiempo en microseconds: " << elapsed_secs << std::endl;
     return 0;
 }
