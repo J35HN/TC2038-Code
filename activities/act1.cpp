@@ -12,7 +12,7 @@ Fecha de creación y modificación: 17/08/2022 - XX/08/2022
 
 int main (int argc, char *argv[]) {
     int n;
-    int DATA[10];
+    int DATA[50000];
     int sum = 0;
     int number;
     std::string fn = std::string(argv[1]); // nombre del archivo.
