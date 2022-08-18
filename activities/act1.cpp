@@ -3,7 +3,7 @@ Nombre: Actividad 1.0 - Complejidad Empirica.
 Descripción: Actividad para generar intuación de la complejidad, 
                 analizando un programa que suma m intancias de n números.
 Autor: Jeshua Nava Avial | A01639282
-Fecha de creación y modificación: 17/08/2022 - XX/08/2022
+Fecha de creación y modificación: 17/08/2022 - 18/08/2022
 */
 #include <iostream>
 #include <iomanip>
