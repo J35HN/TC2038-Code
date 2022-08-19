@@ -11,6 +11,13 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
 
 const int MAX = 50000;
 
+/**
+ * @brief Read data from a txt file that has been passed as an argument.
+ * 
+ * @param list The list that will contain the inputs or data from the txt file.
+ * @param n Amount of data to store in the list.
+ * Complexity: O(n).
+ */
 void readData(int list[MAX], int n)
 {
     for (int i = 0; i < n; i++)
@@ -21,7 +28,6 @@ void readData(int list[MAX], int n)
 
 int main (int argc, char *argv[]) {
     int list[MAX];
-    int number = 0;
     int n = 0;
     // Read amount of arguments/inputs.
     std::cin >> n;
