@@ -6,18 +6,19 @@ Autor: Jeshua Nava Avila | A01639282
 Fecha de creación y modificación: 18/08/2022 - XX/08/2022
 */
 #include <iostream>
-#include <vector>
+// #include <vector>
 #include <fstream>
 #include <math.h>
 #include <string>
 #include <cstdlib>
 
 int main (int argc, char *argv[]) {
-    std::vector<int> list;
+    //std::vector<int> list;
     std::string fn = "waiting for file name :)";
     int number;
     // Revisamos si vamos a obtener nuestra instancia de un txt o de inputs.
     // No importa el caso, insertamos en la lista "list" los números.
+    /*
     if (argc > 2) {
         std::cout << "Inputs" << std::endl;
         for (int i = 1; i < argc; i++) {
@@ -38,8 +39,7 @@ int main (int argc, char *argv[]) {
         }
         input_file.close();
     }
-    for (int i = 0; i < list.size(); i++) {
-        std::cout << list[i] << " ";
-    }
+    */
+
     return 0;
 }
