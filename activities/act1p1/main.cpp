@@ -9,6 +9,7 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
 #include <math.h>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
 
 /**
  * @brief Read data from a txt file that has been passed as an argument.
@@ -27,6 +28,14 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param list 
+ * @param leftIndex 
+ * @param middleIndex 
+ * @param rightIndex 
+ */
 void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightIndex)
 {
     std::vector<int> leftList, rightList; // Temporal sub-vectors. (STARTING WITH NO VALUE).
@@ -49,7 +58,7 @@ void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightInd
     // Compare and add numbers to our list.
     while (i < leftSize && j < rightSize)
     {
-        if (leftList[i] <= rightList[j])
+        if (leftList[i] >= rightList[j])
         {
             list[trueIndex] = leftList[i];
             i++;
@@ -62,20 +71,28 @@ void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightInd
         trueIndex++;
     }
     // If any elements are left in our sub-vectors, we add them to our list.
-    while (i < leftSize)
-    {
-        list[trueIndex] = leftList[i];
-        i++;
-        trueIndex++;
-    }
     while (j < rightSize)
     {
         list[trueIndex] = rightList[j];
         j++;
         trueIndex++;
     }
+    while (i < leftSize)
+    {
+        list[trueIndex] = leftList[i];
+        i++;
+        trueIndex++;
+    }
+    
 }
 
+/**
+ * @brief 
+ * 
+ * @param list 
+ * @param leftIndex 
+ * @param rightIndex 
+ */
 void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
 {
     int middleIndex = 0;
@@ -98,6 +115,7 @@ int main (int argc, char *argv[]) {
     std::cin >> n;
     readData(list, n);
     mergeSort(list, 0, list.size() - 1);
+    //std::reverse(list.begin(), list.end()); // Reverse the list if the order is smallest to largest. But, it will cost more time.
     for (int i = 0; i < n; i++)
     {
         std::cout << list[i] << " ";
