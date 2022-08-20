@@ -29,12 +29,13 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
 }
 
 /**
- * @brief 
+ * @brief merge algorith from Merge Sort. Sorts from largest to smalles value.
  * 
- * @param list 
- * @param leftIndex 
- * @param middleIndex 
- * @param rightIndex 
+ * @param list List that contains the data and that will be sorted with other two sub-vectors.
+ * @param leftIndex Indicates the numeric value of the starting index of the list.
+ * @param middleIndex Indicates the numeric value of the middle index of the list.
+ * @param rightIndex Indicates the numeric value of the end or last possible index of the list.
+ * Complexity: O(n).
  */
 void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightIndex)
 {
@@ -87,11 +88,12 @@ void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightInd
 }
 
 /**
- * @brief 
+ * @brief Merge Sort algorithm. Divides the list into sub-vectors, and sorts from largest to smallest.
  * 
- * @param list 
- * @param leftIndex 
- * @param rightIndex 
+ * @param list The list to sort. 
+ * @param leftIndex The value of the starting index of the list.
+ * @param rightIndex The value of the last index of the list.
+ * Complexity: O(n log(n)).
  */
 void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
 {
