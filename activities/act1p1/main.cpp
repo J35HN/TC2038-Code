@@ -10,8 +10,6 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
 #include <cstdlib>
 #include <vector>
 
-const int MAX = 50000;
-
 /**
  * @brief Read data from a txt file that has been passed as an argument.
  * 
@@ -27,6 +25,22 @@ const int MAX = 50000;
         std::cin >> data;
         list.push_back(data);
     }
+}
+
+
+void mergeSort(std::vector<int>& list, int leftIndex, int rightIndex)
+{
+    int middleIndex = 0;
+    // Verify if we need to create more sub-problems.
+    if (leftIndex < rightIndex)
+    {
+        middleIndex = std::floor((leftIndex + rightIndex) / 2); 
+        mergeSort(list, leftIndex, middleIndex);
+        mergeSort(list, middleIndex + 1, rightIndex);
+
+        merge(list, leftIndex, middleIndex, rightIndex);
+    }
+    
 }
 
 int main (int argc, char *argv[]) {
