@@ -19,16 +19,18 @@ const int MAX = 50000;
  * @param n Amount of data to store in the list.
  * Complexity: O(n).
  */
-void readData(int list[MAX], int n)
+ void readData(std::vector<int>& list, int n)
 {
+    int data = 0;
     for (int i = 0; i < n; i++)
     {
-        std::cin >> list[i];
+        std::cin >> data;
+        list.push_back(data);
     }
 }
 
 int main (int argc, char *argv[]) {
-    int list[MAX];
+    std::vector<int> list;
     int n = 0;
     // Read amount of arguments/inputs.
     std::cin >> n;
