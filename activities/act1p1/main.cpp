@@ -8,6 +8,7 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
 #include <iostream>
 #include <math.h>
 #include <cstdlib>
+#include <vector>
 
 const int MAX = 50000;
 
