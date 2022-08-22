@@ -115,7 +115,16 @@ int main (int argc, char *argv[]) {
     int n = 0;
     // Read amount of arguments/inputs.
     std::cin >> n;
+    // Verify for case n = 0.
+    if (n == 0)
+    {
+        std::cerr << "N = 0. PLEASE INSERT DATA IN THE TXT FILE." << std::endl;
+        return EXIT_FAILURE;
+    }
     readData(list, n);
+    // Verify for case n = 1.
+
+
     mergeSort(list, 0, list.size() - 1);
     //std::reverse(list.begin(), list.end()); // Reverse the list if the order is smallest to largest. But, it will cost more time.
     for (int i = 0; i < n; i++)
