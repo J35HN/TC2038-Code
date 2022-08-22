@@ -122,9 +122,6 @@ int main (int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     readData(list, n);
-    // Verify for case n = 1.
-
-
     mergeSort(list, 0, list.size() - 1);
     //std::reverse(list.begin(), list.end()); // Reverse the list if the order is smallest to largest. But, it will cost more time.
     for (int i = 0; i < n; i++)
