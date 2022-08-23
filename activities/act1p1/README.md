@@ -15,6 +15,8 @@ Lo más problable es que en Linux tenga esta segunda sintaxis, pero por si acaso
 quizá valga la pena intentar de la primera forma.
 
 ## Casos Prueba
+No agregue caso de prueba por si el valor de N es diferente al número de entradas para la lista.
+Ya que se acordo en clase que N siempre va ser igual a la cantidad de entradas para la lista.
 ### 1
 **[ 10 ]**
 Este caso de prueba lo escogo por ser un caso particular. No queremos que corra todo el algoritmo completo 

@@ -20,7 +20,7 @@ Fecha de creación y modificación: 18/08/2022 - 22/08/2022
  */
  void readData (std::vector<double>& list, int n)
 {
-    int data = 0;
+    double data = 0;
     for (int i = 0; i < n; i++)
     {
         std::cin >> data;
