@@ -28,10 +28,13 @@ int main (int argc, char *argv[])
     std::cin >> N;
     readData(validCoins, N);
     // Read product price and payment.
+    std::cin >> P;
+    std::cin >> Q;
     std::cout << "Amount of valid coins: " << N << "\nValid coins: " << std::endl;
     for (int i = 0; i < N; i++)
     {
         std::cout << validCoins[i] << " ";
     }
+    std::cout << "\nPrice of product: " << P << "\nPayment: " << Q << std::endl;
     return 0;
 }
