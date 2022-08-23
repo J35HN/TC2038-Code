@@ -16,7 +16,7 @@ quizá valga la pena intentar de la primera forma.
 
 ## Casos Prueba
 ### 1
-**[ 1 ]**
+**[ 10 ]**
 Este caso de prueba lo escogo por ser un caso particular. No queremos que corra todo el algoritmo completo 
 cuando *no es necesario tener que ordenar el único elemento de la lista*.
 

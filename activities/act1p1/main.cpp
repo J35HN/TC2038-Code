@@ -18,7 +18,7 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
  * @param n Amount of data to store in the list.
  * Complexity: O(n).
  */
- void readData (std::vector<int>& list, int n)
+ void readData (std::vector<double>& list, int n)
 {
     int data = 0;
     for (int i = 0; i < n; i++)
@@ -37,9 +37,9 @@ Fecha de creación y modificación: 18/08/2022 - XX/08/2022
  * @param rightIndex Indicates the numeric value of the end or last possible index of the list.
  * Complexity: O(n).
  */
-void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightIndex)
+void merge (std::vector<double>& list, int leftIndex, int middleIndex, int rightIndex)
 {
-    std::vector<int> leftList, rightList; // Temporal sub-vectors. (STARTING WITH NO VALUE).
+    std::vector<double> leftList, rightList; // Temporal sub-vectors. (STARTING WITH NO VALUE).
     int leftSize = 0, rightSize = 0, i = 0, j = 0;
     int trueIndex = leftIndex;
     // Calculte the "length" of the sub-vectors. They end up size + 1, to compensate
@@ -95,7 +95,7 @@ void merge (std::vector<int>& list, int leftIndex, int middleIndex, int rightInd
  * @param rightIndex The value of the last index of the list.
  * Complexity: O(n log(n)).
  */
-void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
+void mergeSort (std::vector<double>& list, int leftIndex, int rightIndex)
 {
     int middleIndex = 0;
     // Verify if we need to create more sub-problems.
@@ -111,7 +111,7 @@ void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
 }
 
 int main (int argc, char *argv[]) {
-    std::vector<int> list; // Cambiar a tipo double.
+    std::vector<double> list; // Cambiar a tipo double.
     int n = 0;
     // Read amount of arguments/inputs.
     std::cin >> n;
