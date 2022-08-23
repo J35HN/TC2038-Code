@@ -111,7 +111,7 @@ void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
 }
 
 int main (int argc, char *argv[]) {
-    std::vector<int> list;
+    std::vector<int> list; // Cambiar a tipo double.
     int n = 0;
     // Read amount of arguments/inputs.
     std::cin >> n;
