@@ -10,10 +10,10 @@ Fecha de creación y modificación: 23/08/2022 - XX/08/2022
 #include <iostream>
 #include <vector>
 
-void readData (std::vector<int>& validCoins, int n)
+void readData (std::vector<int>& validCoins, int N)
 {
     int data = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < N; i++)
     {
         std::cin >> data;
         validCoins.push_back(data);
@@ -23,12 +23,13 @@ void readData (std::vector<int>& validCoins, int n)
 int main (int argc, char *argv[])
 {
     std::vector<int> validCoins;
-    int n = 0;
+    int N = 0, P = 0, Q = 0;
     // Read amount of arguments/valid coins inputs, and the values of the coins.
-    std::cin >> n;
-    readData(validCoins, n);
-    std::cout << "Amount of valid coins: " << n << "\nValid coins: " << std::endl;
-    for (int i = 0; i < n; i++)
+    std::cin >> N;
+    readData(validCoins, N);
+    // Read product price and payment.
+    std::cout << "Amount of valid coins: " << N << "\nValid coins: " << std::endl;
+    for (int i = 0; i < N; i++)
     {
         std::cout << validCoins[i] << " ";
     }
