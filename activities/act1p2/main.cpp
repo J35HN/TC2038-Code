@@ -10,6 +10,13 @@ Fecha de creación y modificación: 23/08/2022 - XX/08/2022
 #include <iostream>
 #include <vector>
 
+/**
+ * @brief Read coin data from txt file that has been passed as an argument.
+ * 
+ * @param validCoins List that will contain the value of the valid coins.
+ * @param N Amount of valid coins.
+ * Complexity: O(n).
+ */
 void readData (std::vector<int>& validCoins, int N)
 {
     int data = 0;
