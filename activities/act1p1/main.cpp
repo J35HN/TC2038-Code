@@ -128,6 +128,5 @@ int main (int argc, char *argv[]) {
     {
         std::cout << list[i] << " ";
     }
-
     return 0;
 }
