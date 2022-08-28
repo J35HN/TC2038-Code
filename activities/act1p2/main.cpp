@@ -129,11 +129,11 @@ void greedyAlgorithm (std::vector<int>& denomination, std::vector<int>& solution
         // leave the amount 0. If not, calculate the amount needed of the current coin.
         if (remainder > 0)
         {
-            solution[i] = 0;
-        }
-        else 
-        {
-            remainder = change % currentCoin;
+            if (remainder / currentCoin > 0)
+            {
+                solution[i] = remainder / currentCoin;
+            }
+            remainder %= currentCoin;
         }
     }
 }
@@ -155,6 +155,8 @@ int main (int argc, char *argv[])
     // Read product price and payment.
     std::cin >> P;
     std::cin >> Q;
+    // Obtain solutions
+    greedyAlgorithm(denominationCoins, greedySolution, Q - P);
     
     std::cout << "Amount of valid coins: " << N << "\nValid coins: " << std::endl;
     for (int i = 0; i < N; i++)
