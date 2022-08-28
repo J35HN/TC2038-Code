@@ -110,6 +110,34 @@ void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
     
 }
 
+void fillWithAmount (std::vector<int>& vector, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        vector.push_back(0);
+    }
+}
+
+void greedyAlgorithm (std::vector<int>& denomination, std::vector<int>& solution, int change)
+{
+    int currentCoin = 0, remainder = change;
+    // Travel each denomination value and calculate amount needed of each.
+    for (int i = 0; i < denomination.size(); i++)
+    {
+        currentCoin = denomination[i];
+        // If we already have the exact change and still have coins in our denomination,
+        // leave the amount 0. If not, calculate the amount needed of the current coin.
+        if (remainder > 0)
+        {
+            solution[i] = 0;
+        }
+        else 
+        {
+            remainder = change % currentCoin;
+        }
+    }
+}
+
 int main (int argc, char *argv[])
 {
     std::vector<int> denominationCoins;
@@ -119,17 +147,31 @@ int main (int argc, char *argv[])
     // Read amount of arguments/valid coins inputs, and the values of the coins.
     std::cin >> N;
     readData(denominationCoins, N);
+    // Fill with 0 our solution vectors.
+    fillWithAmount(greedySolution, N);
+    fillWithAmount(dynamicSolution, N);
     // Order from biggest to smallest our denommination list (just in case).
     mergeSort(denominationCoins, 0, denominationCoins.size() - 1);
     // Read product price and payment.
     std::cin >> P;
     std::cin >> Q;
-    /*
+    
     std::cout << "Amount of valid coins: " << N << "\nValid coins: " << std::endl;
     for (int i = 0; i < N; i++)
     {
-        std::cout << validCoins[i] << " ";
+        std::cout << denominationCoins[i] << " ";
     }
+    std::cout << std::endl;
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << greedySolution[i] << " ";
+    }
+    std::cout << std::endl;
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << dynamicSolution[i] << " ";
+    }
+    /*
     std::cout << "\nPrice of product: " << P << "\nPayment: " << Q << std::endl;
     */
     return 0;
