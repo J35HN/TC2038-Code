@@ -157,24 +157,26 @@ int main (int argc, char *argv[])
     std::cin >> Q;
     // Obtain solutions
     greedyAlgorithm(denominationCoins, greedySolution, Q - P);
-    
-    std::cout << "Amount of valid coins: " << N << "\nValid coins: " << std::endl;
+    // Present solutions.
+    std::cout << "Amount of valid coins: " << N << std::endl;
+    std::cout << "Product Price: " << P << ". Payment: " << Q << ". Change: " << Q - P << std::endl; 
+    std::cout << "Coin denominations:" << std::endl << "{ ";
     for (int i = 0; i < N; i++)
     {
         std::cout << denominationCoins[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << "}" << std::endl << std::endl << "SOLUTIONS" << std::endl;
+    std::cout << "Greedy Algorithm Solution" << std::endl << "{ ";
     for (int i = 0; i < N; i++)
     {
-        std::cout << greedySolution[i] << " ";
+        std::cout << denominationCoins[i] << ":" << greedySolution[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << " }" << std::endl;
+    std::cout << "Dynamic Algorithm Solution" << std::endl << "{ ";
     for (int i = 0; i < N; i++)
     {
-        std::cout << dynamicSolution[i] << " ";
+        std::cout << denominationCoins[i] << ":" << dynamicSolution[i] << " ";
     }
-    /*
-    std::cout << "\nPrice of product: " << P << "\nPayment: " << Q << std::endl;
-    */
+    std::cout << " }";
     return 0;
 }
