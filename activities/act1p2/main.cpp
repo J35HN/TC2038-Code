@@ -110,7 +110,7 @@ void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
     
 }
 
-void fillWithAmount (std::vector<int>& vector, int n)
+void fillWithCeroNAmount (std::vector<int>& vector, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -118,13 +118,13 @@ void fillWithAmount (std::vector<int>& vector, int n)
     }
 }
 
-void greedyAlgorithm (std::vector<int>& denomination, std::vector<int>& solution, int change)
+void greedyAlgorithm (std::vector<int>& denominations, std::vector<int>& solution, int change)
 {
     int currentCoin = 0, remainder = change;
     // Travel each denomination value and calculate amount needed of each.
-    for (int i = 0; i < denomination.size(); i++)
+    for (int i = 0; i < denominations.size(); i++)
     {
-        currentCoin = denomination[i];
+        currentCoin = denominations[i];
         // If we already have the exact change and still have coins in our denomination,
         // leave the amount 0. If not, calculate the amount needed of the current coin.
         if (remainder > 0)
@@ -138,6 +138,42 @@ void greedyAlgorithm (std::vector<int>& denomination, std::vector<int>& solution
     }
 }
 
+void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& solution, int change)
+{
+    std::vector<int> coinsUsed;
+    int temp = 0, j = 0, size = denominations.size();
+    // Fill with 0s to be size of change.
+    fillWithCeroNAmount(coinsUsed, change + 1);
+    for (int i = 1; i <= change; i++)
+    {
+        temp = change + 1;
+        j = 1;
+        // We traverse our denominations vector from right to left.
+        // So to size we subtract j.
+        while (j <= denominations.size() && i >= denominations[size - j])
+        {
+            temp = std::min(coinsUsed[i - denominations[size - j]], temp);
+            j += 1;
+        }
+        if (i % denominations[size - j + 1] == 0)
+        {
+            std::cout << denominations[size - j + 1] << std::endl;    
+        }
+        else
+        {
+            std::cout << denominations[size - j + 2] << std::endl;
+        }
+        //std::cout << denominations[size - j + 1] << std::endl;
+        coinsUsed[i] = temp + 1;
+    } 
+    std::cout << "coins used: " << coinsUsed[change] << std::endl;
+    for (int i = 0; i <= change; i++)
+    {
+        std::cout << coinsUsed[i] << " ";
+    }
+    std::cout << std::endl; 
+}
+
 int main (int argc, char *argv[])
 {
     std::vector<int> denominationCoins;
@@ -148,8 +184,8 @@ int main (int argc, char *argv[])
     std::cin >> N;
     readData(denominationCoins, N);
     // Fill with 0 our solution vectors.
-    fillWithAmount(greedySolution, N);
-    fillWithAmount(dynamicSolution, N);
+    fillWithCeroNAmount(greedySolution, N);
+    fillWithCeroNAmount(dynamicSolution, N);
     // Order from biggest to smallest our denommination list (just in case).
     mergeSort(denominationCoins, 0, denominationCoins.size() - 1);
     // Read product price and payment.
@@ -157,6 +193,7 @@ int main (int argc, char *argv[])
     std::cin >> Q;
     // Obtain solutions
     greedyAlgorithm(denominationCoins, greedySolution, Q - P);
+    dynamicAlgorithm(denominationCoins, dynamicSolution, Q - P);
     // Present solutions.
     std::cout << "Amount of valid coins: " << N << std::endl;
     std::cout << "Product Price: " << P << ". Payment: " << Q << ". Change: " << Q - P << std::endl; 
