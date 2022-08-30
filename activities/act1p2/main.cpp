@@ -5,7 +5,7 @@ Nombre: Actividad 1.2 -
 Descripción: Actividad para generar práctica de "Programación Dinámica"
                 y "Algoritmos Avaros".
 Autor: Jeshua Nava Avila | A01639282
-Fecha de creación y modificación: 23/08/2022 - XX/08/2022
+Fecha de creación y modificación: 23/08/2022 - 30/08/2022
 */
 #include <iostream>
 #include <vector>
@@ -110,6 +110,13 @@ void mergeSort (std::vector<int>& list, int leftIndex, int rightIndex)
     
 }
 
+/**
+ * @brief Fills a vector with values of ceros, for n times.
+ * 
+ * @param vector The vector to fill with ceros.
+ * @param n The amount of ceros.
+ * Complexity: O(n).
+ */
 void fillWithCeroNAmount (std::vector<int>& vector, int n)
 {
     for (int i = 0; i < n; i++)
@@ -118,6 +125,14 @@ void fillWithCeroNAmount (std::vector<int>& vector, int n)
     }
 }
 
+/**
+ * @brief Greedy Algorithm for the coin change problem.
+ * 
+ * @param denominations Vector that contains the coins denominations.
+ * @param solution Vector that will contain the solutions.
+ * @param change The change to add up with our coin denominations.
+ * Complexity: O(n).
+ */
 void greedyAlgorithm (std::vector<int>& denominations, std::vector<int>& solution, int change)
 {
     int currentCoin = 0, remainder = change;
@@ -138,6 +153,16 @@ void greedyAlgorithm (std::vector<int>& denominations, std::vector<int>& solutio
     }
 }
 
+/**
+ * @brief Dynamic Programming Algorithm for the coin change problem.
+ * 
+ * @param denominations Vector that contains the coins denominations.
+ * @param solution Vector that will contain the solutions.
+ * @param change The change to add up with our coin denominations.
+ * Complexity: O(n).
+ * Worst case Complexity: O(n^2). If the amount of coin denominations is equal to our change, complexity 
+ *  will grow due to having a while in a for loop.
+ */
 void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& solution, int change)
 {
     std::vector<int> coinsUsed;
@@ -146,6 +171,7 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
     // Fill with 0s to be size of change.
     fillWithCeroNAmount(coinsUsed, change + 1);
     fillWithCeroNAmount(lastCoinUsed, change + 1);
+    // Dynammicly obtain the amount of coins used.
     for (int i = 1; i <= change; i++)
     {
         temp = change + 1;
@@ -160,6 +186,7 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
         j -= 1;
         // Calculate the last coin used.
         // Traverse each denomination used until i % CurrentDenomination == 0.
+        // After, add it to our other vector.
         remainder = i;
         while (j >= 1)
         {
@@ -178,11 +205,10 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
     }
     // With the vector lastCoinUsed, we can obtain the values of the coins used.
     // Just traverse the vector, from the last value, subtracting each value to the index.
-    j = 0;
     while (change > 0)
     {
         temp = lastCoinUsed[change];
-        // Search for corresponding index.
+        // Search for corresponding index in denominations, to add one to our solution in index.
         for (int i = 0; i < denominations.size(); i++)
         {
             if (temp == denominations[i])
