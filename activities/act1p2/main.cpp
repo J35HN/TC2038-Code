@@ -142,7 +142,7 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
 {
     std::vector<int> coinsUsed;
     std::vector<int> lastCoinUsed;
-    int temp = 0, j = 0, remainder = 0, size = denominations.size();
+    int temp = 0, j = 0, index = 0, remainder = 0, size = denominations.size();
     // Fill with 0s to be size of change.
     fillWithCeroNAmount(coinsUsed, change + 1);
     fillWithCeroNAmount(lastCoinUsed, change + 1);
@@ -159,7 +159,7 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
         }
         j -= 1;
         // Calculate the last coin used.
-        // Traverse each denomination used until i % denomination == 0.
+        // Traverse each denomination used until i % CurrentDenomination == 0.
         remainder = i;
         while (j >= 1)
         {
@@ -174,15 +174,25 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
                 j -= 1;
             }
         }
-        //std::cout << denominations[size - j + 1] << std::endl;
         coinsUsed[i] = temp + 1;
-    } 
-    std::cout << "coins used: " << coinsUsed[change] << std::endl;
-    for (int i = 0; i <= change; i++)
-    {
-        std::cout << lastCoinUsed[i] << " ";
     }
-    std::cout << std::endl; 
+    // With the vector lastCoinUsed, we can obtain the values of the coins used.
+    // Just traverse the vector, from the last value, subtracting each value to the index.
+    j = 0;
+    while (change > 0)
+    {
+        temp = lastCoinUsed[change];
+        // Search for corresponding index.
+        for (int i = 0; i < denominations.size(); i++)
+        {
+            if (temp == denominations[i])
+            {
+                index = i;
+            }
+        }
+        solution[index] = solution[index] + 1;
+        change -= temp;
+    }
 }
 
 int main (int argc, char *argv[])
