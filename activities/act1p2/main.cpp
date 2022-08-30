@@ -141,9 +141,11 @@ void greedyAlgorithm (std::vector<int>& denominations, std::vector<int>& solutio
 void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& solution, int change)
 {
     std::vector<int> coinsUsed;
-    int temp = 0, j = 0, size = denominations.size();
+    std::vector<int> lastCoinUsed;
+    int temp = 0, j = 0, remainder = 0, size = denominations.size();
     // Fill with 0s to be size of change.
     fillWithCeroNAmount(coinsUsed, change + 1);
+    fillWithCeroNAmount(lastCoinUsed, change + 1);
     for (int i = 1; i <= change; i++)
     {
         temp = change + 1;
@@ -155,13 +157,22 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
             temp = std::min(coinsUsed[i - denominations[size - j]], temp);
             j += 1;
         }
-        if (i % denominations[size - j + 1] == 0)
+        j -= 1;
+        // Calculate the last coin used.
+        // Traverse each denomination used until i % denomination == 0.
+        remainder = i;
+        while (j >= 1)
         {
-            std::cout << denominations[size - j + 1] << std::endl;    
-        }
-        else
-        {
-            std::cout << denominations[size - j + 2] << std::endl;
+            if (i % denominations[size - j] == 0)
+            {
+                lastCoinUsed[i] = denominations[size - j];
+                j = 0;
+            }
+            else
+            {
+                remainder %= denominations[size - j];
+                j -= 1;
+            }
         }
         //std::cout << denominations[size - j + 1] << std::endl;
         coinsUsed[i] = temp + 1;
@@ -169,7 +180,7 @@ void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& soluti
     std::cout << "coins used: " << coinsUsed[change] << std::endl;
     for (int i = 0; i <= change; i++)
     {
-        std::cout << coinsUsed[i] << " ";
+        std::cout << lastCoinUsed[i] << " ";
     }
     std::cout << std::endl; 
 }
