@@ -159,9 +159,10 @@ void greedyAlgorithm (std::vector<int>& denominations, std::vector<int>& solutio
  * @param denominations Vector that contains the coins denominations.
  * @param solution Vector that will contain the solutions.
  * @param change The change to add up with our coin denominations.
- * Complexity: O(n).
+ * Complexity: O(n*m).
  * Worst case Complexity: O(n^2). If the amount of coin denominations is equal to our change, complexity 
- *  will grow due to having a while in a for loop.
+ *  will grow due to having a while in a for loop. Complexity could be better, if DP was implemented
+ * in a tree with recursion, and not a For Loop.
  */
 void dynamicAlgorithm (std::vector<int>& denominations, std::vector<int>& solution, int change)
 {
