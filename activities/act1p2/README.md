@@ -27,5 +27,5 @@ Este caso *tiene las denominaciones de las monedas sin ningún orden*, de ahí e
 En esta situación, *las denominaciones son número múltiplo de 3 (y 1), una denominación que no se maneja en las monedas populares del mercado en la actualidad*. Este caso, sirve para demostrar la exactitud de los algoritmos.
 
 ### 4
-**[1, 2, 15, 20]**
-Este es uno de los casos para demostrar que pasaría *si nada más tenemos una moneda en nuestra denominación, y si ese no es uno*. En cada prueba anterior, el uno ha sido agregado a proposito, para que siempre se pueda devolver un cambio exacto.
+**[1, 1, 15, 20]**
+Este es uno de los casos para demostrar que pasaría *si nada más tenemos una moneda en nuestra denominación*. Y para regresar cambio exacto, este debería ser 1.

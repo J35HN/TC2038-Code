@@ -251,16 +251,16 @@ int main (int argc, char *argv[])
         std::cout << denominationCoins[i] << " ";
     }
     std::cout << "}" << std::endl << std::endl << "SOLUTIONS" << std::endl;
-    std::cout << "Greedy Algorithm Solution" << std::endl << "{ ";
-    for (int i = 0; i < N; i++)
-    {
-        std::cout << denominationCoins[i] << ":" << greedySolution[i] << " ";
-    }
-    std::cout << " }" << std::endl;
     std::cout << "Dynamic Algorithm Solution" << std::endl << "{ ";
     for (int i = 0; i < N; i++)
     {
         std::cout << denominationCoins[i] << ":" << dynamicSolution[i] << " ";
+    }
+    std::cout << " }" << std::endl;
+    std::cout << "Greedy Algorithm Solution" << std::endl << "{ ";
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << denominationCoins[i] << ":" << greedySolution[i] << " ";
     }
     std::cout << " }";
     return 0;
