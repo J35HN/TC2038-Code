@@ -14,12 +14,14 @@ int main (int argc, char *argv[])
     // Initialize random seed.
     std::srand (time(NULL));
 
+    // Create and open text file.
+    std::ofstream MyFile(outputFileName);
     // Generate random chars.
     for (int i = 0; i < charsToGenerate; i++)
     {
-        std::cout << hexadecimalChars[rand()%17];
+        MyFile << hexadecimalChars[rand()%17];
     }
-    //std::cout << "Filename: " << outputFile << ". Lines: " << linesToGenereta << std::endl;
-
+    // Close file.
+    MyFile.close();
     return 0;
 }
