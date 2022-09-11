@@ -18,6 +18,8 @@ int main (int argc, char *argv[])
     std::string mcode1 = "";
     std::string mcode2 = "";
     std::string mcode3 = "";
+    std::string files[5] = {transmision1, transmision2, mcode1, mcode2, mcode3};
+    std::string filesPath[5] = {"tranmision1.txt", "transmision2.txt", "mcode1.txt", "mcode2.txt", "mcode3.txt"};
     
     // Store the file content into the strings.
     std::ifstream inFile;
