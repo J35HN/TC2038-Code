@@ -11,6 +11,24 @@ Fecha de creación y modificación: 10/09/2022 - 30/09/2022
 #include <sstream>
 #include <fstream>
 
+int openFileAndStoreInVar (std::string& str, std::string path)
+{
+    std::ifstream inFile;
+    inFile.open(path);
+        if (inFile.is_open())
+        {
+            std::stringstream strStream;
+            strStream << inFile.rdbuf();
+            str = strStream.str();
+            return 1;
+        }
+        else
+        {
+            std::cout << "Could not open file: " << path << std::endl;
+            return 0;
+        }
+}
+
 int main (int argc, char *argv[])
 {
     std::string transmision1 = "";
@@ -18,24 +36,13 @@ int main (int argc, char *argv[])
     std::string mcode1 = "";
     std::string mcode2 = "";
     std::string mcode3 = "";
-    std::string files[5] = {transmision1, transmision2, mcode1, mcode2, mcode3};
-    std::string filesPath[5] = {"tranmision1.txt", "transmision2.txt", "mcode1.txt", "mcode2.txt", "mcode3.txt"};
-    
+        
     // Store the file content into the strings.
-    std::ifstream inFile;
-    inFile.open("mcode1.txt");
-    if (inFile.is_open()){
-        std::stringstream strStream;
-        strStream << inFile.rdbuf();
-        mcode1 = strStream.str();
-        std::cout << mcode1;
-    }
-    else
-    {
-        std::cout << "Did not open" << std::endl;
-    }
-    
-
+    int openSuccess = openFileAndStoreInVar(transmision1, "transmission1.txt"); if(openSuccess == 0){return 0;}
+    openSuccess = openFileAndStoreInVar(transmision2, "transmission2.txt"); if(openSuccess == 0){return 0;}
+    openSuccess = openFileAndStoreInVar(mcode1, "mcode1.txt"); if(openSuccess == 0){return 0;}
+    openSuccess = openFileAndStoreInVar(mcode2, "mcode2.txt"); if(openSuccess == 0){return 0;}
+    openSuccess = openFileAndStoreInVar(mcode3, "mcode3.txt"); if(openSuccess == 0){return 0;}
     
     return 0;
 }
