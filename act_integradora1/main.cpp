@@ -3,7 +3,7 @@ Nombre: Actividad Integradora 1.
 Descripción: Primera actividad integradora, involucrando 
                 algoritmos de busqueda de strings.
 Autor: Jeshua Nava Avila | A01639282
-Fecha de creación y modificación: 10/09/2022 - 30/09/2022
+Fecha de creación y modificación: 10/09/2022 - XX/09/2022
 */
 #include <iostream>
 #include <vector>
@@ -11,6 +11,14 @@ Fecha de creación y modificación: 10/09/2022 - 30/09/2022
 #include <sstream>
 #include <fstream>
 
+/**
+ * @brief Store the contents of a file into a string.
+ * 
+ * @param str String which will have the values of a file.
+ * @param path The path of the file to open.
+ * @return int Determines if the file was successfully open or not.
+ * Complexity: O(1).
+ */
 int openFileAndStoreInVar (std::string& str, std::string path)
 {
     std::ifstream inFile;
