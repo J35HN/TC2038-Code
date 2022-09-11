@@ -39,6 +39,8 @@ int openFileAndStoreInVar (std::string& str, std::string path)
 
 int main (int argc, char *argv[])
 {
+    bool mcodeInTransmission = false;
+    int startPos = -1, finalPos = -1;
     std::string transmision1 = "";
     std::string transmision2 = "";
     std::string mcode1 = "";
