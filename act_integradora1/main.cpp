@@ -49,9 +49,10 @@ std::string convertString (std::string str)
     return newStr;
 }
 
-std::string longestPalindromeSubStr(std::vector<int>& indexArray, std::string str)
+std::vector<int> longestPalindromeSubStr(std::vector<int>& indexArray, std::string str)
 {
     std::string newStr = convertString(str);
+    std::vector<int> palindromeInfo(2, 0);
     int center = 0, right = 0;
     for (int i = 1; i < newStr.size() - 1; i++)
     {
@@ -85,19 +86,18 @@ std::string longestPalindromeSubStr(std::vector<int>& indexArray, std::string st
             centerIndex = i;
         }
     }
-    std::cout << maxPalindrome << " " << newStr[centerIndex] << std::endl;
-    return str.substr( (centerIndex - 1 - maxPalindrome) / 2, maxPalindrome);
+    palindromeInfo[0] = (centerIndex - 1 - maxPalindrome) / 2;
+    palindromeInfo[1] = maxPalindrome;
+    //str.substr( (centerIndex - 1 - maxPalindrome) / 2, maxPalindrome);
+    return palindromeInfo;
 }
 
 int main (int argc, char *argv[])
 {
     bool mcodeInTransmission = false;
     int startPos = -1, finalPos = -1;
-    std::string transmision1 = "";
-    std::string transmision2 = "";
-    std::string mcode1 = "";
-    std::string mcode2 = "";
-    std::string mcode3 = "";
+    std::string transmision1 = "", transmision2 = "", mcode1 = "", mcode2 = "", mcode3 = "";
+    std::vector<int> palindromeInfo(2, 0);
         
     // Store the file content into the strings.
     int openSuccess = openFileAndStoreInVar(transmision1, "transmission1.txt"); if(openSuccess == 0){return 0;}
@@ -106,5 +106,16 @@ int main (int argc, char *argv[])
     openSuccess = openFileAndStoreInVar(mcode2, "mcode2.txt"); if(openSuccess == 0){return 0;}
     openSuccess = openFileAndStoreInVar(mcode3, "mcode3.txt"); if(openSuccess == 0){return 0;}
     
+    
+    // Longest Palindrome.
+    // Transmission 1.
+    std::vector<int> indexArray1(transmision1.size() * 2, 0);
+    palindromeInfo = longestPalindromeSubStr(indexArray1, transmision1);
+    std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
+    // Transmission 2.
+    std::vector<int> indexArray2(transmision2.size() * 2, 0);
+    palindromeInfo = longestPalindromeSubStr(indexArray2, transmision2);
+    std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
+
     return 0;
 }

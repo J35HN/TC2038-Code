@@ -15,13 +15,13 @@ std::vector<std::vector<int>> LCSMatrix (std::string s1, std::string s2)
             {
                 matriz[i][j] = 0;
             }
-            else if 
+            else if (s1[i] == s2[j])
             {
-                
+                matriz[i][j] = 1 + matriz[i-1][j-1];
             }
             else
             {
-
+                matriz[i][j] = 0;
             }
         }
     }
@@ -31,8 +31,8 @@ std::vector<std::vector<int>> LCSMatrix (std::string s1, std::string s2)
 
 int main (int argc, char *argv[])
 {
-    std::string s1 = "ABAB";
-    std::string s2 = "BABA";
+    std::string s1 = "ABCXYZAY";
+    std::string s2 = "XYZABCB";
     std::vector<std::vector<int>> matriz;
 
     matriz = LCSMatrix (s1, s2);
