@@ -22,7 +22,7 @@ Fecha de creación y modificación: 10/09/2022 - XX/09/2022
  * @param str String which will have the values of a file.
  * @param path The path of the file to open.
  * @return int Determines if the file was successfully open or not.
- * Complexity: O(1).
+ * Complexity: O(n).
  */
 int openFileAndStoreInVar (std::string& str, std::string path)
 {
@@ -42,6 +42,13 @@ int openFileAndStoreInVar (std::string& str, std::string path)
         }
 }
 
+/**
+ * @brief Inserts special characters to a string, for the use in Manacher Algorithm.
+ * 
+ * @param str String wich we inser the special characters.
+ * @return string New string with special characters.
+ * Complexity: O(n).
+ */
 std::string convertString (std::string str)
 {
     std::string newStr = "@";
@@ -54,13 +61,23 @@ std::string convertString (std::string str)
     return newStr;
 }
 
+/**
+ * @brief Manacher algorithm for longest palindrome substring.
+ * 
+ * @param indexArray Array for index palindrome values.
+ * @param str String from where we find a palindrome.
+ * @return vector<int> Vector with the index position of the palindrom and its lenght.
+ * Complexity: O(n).
+ */
 std::vector<int> longestPalindromeSubStr(std::vector<int>& indexArray, std::string str)
 {
     std::string newStr = convertString(str);
     std::vector<int> palindromeInfo(2, 0);
     int center = 0, right = 0;
+    int maxPalindrome = 0, centerIndex = 0;
     for (int i = 1; i < newStr.size() - 1; i++)
     {
+        // Update mirror index.
         int iMirror = center - (i - center);
 
         if (right > i)
@@ -72,7 +89,7 @@ std::vector<int> longestPalindromeSubStr(std::vector<int>& indexArray, std::stri
         {
             indexArray[i] = indexArray[i] + 1;
         }
-
+        // Update center and right index.
         if (i + indexArray[i] > right)
         {
             center = i;
@@ -80,9 +97,7 @@ std::vector<int> longestPalindromeSubStr(std::vector<int>& indexArray, std::stri
         }
     }
 
-    int maxPalindrome = 0;
-    int centerIndex = 0;
-
+    // Find the longest palindrome index value.
     for (int i = 1; i < newStr.size() - 1; i++)
     {
         if (indexArray[i] > maxPalindrome)
@@ -91,7 +106,8 @@ std::vector<int> longestPalindromeSubStr(std::vector<int>& indexArray, std::stri
             centerIndex = i;
         }
     }
-    palindromeInfo[0] = (centerIndex - 1 - maxPalindrome) / 2;
+    // Store values of index and length.
+    palindromeInfo[0] = (centerIndex - 1 - maxPalindrome) / 2; // Adjust to offset.
     palindromeInfo[1] = maxPalindrome;
     //str.substr( (centerIndex - 1 - maxPalindrome) / 2, maxPalindrome);
     return palindromeInfo;
@@ -111,18 +127,7 @@ int main (int argc, char *argv[])
     openSuccess = openFileAndStoreInVar(mcode2, "mcode2.txt"); if(openSuccess == 0){return 0;}
     openSuccess = openFileAndStoreInVar(mcode3, "mcode3.txt"); if(openSuccess == 0){return 0;}
 
-    
-    // Longest Palindrome.
-    // Transmission 1.
-    std::vector<int> indexArray1(transmision1.size() * 2, 0);
-    palindromeInfo = longestPalindromeSubStr(indexArray1, transmision1);
-    std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
-    // Transmission 2.
-    std::vector<int> indexArray2(transmision2.size() * 2, 0);
-    palindromeInfo = longestPalindromeSubStr(indexArray2, transmision2);
-    std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
-
-
+    // Subtring in string.
     std::vector<std::string> transmissions{transmision1, transmision2};
     std::vector<std::string> mcodes{mcode1, mcode2, mcode3};
 
@@ -132,10 +137,17 @@ int main (int argc, char *argv[])
             std::cout << "Transmission " << i + 1 << " contains malicious code " << j + 1 << ": " << contains << std::endl;  
         }
     }
-    
-
+    // Longest Palindrome.
+    // Transmission 1.
+    std::vector<int> indexArray1(transmision1.size() * 2, 0);
+    palindromeInfo = longestPalindromeSubStr(indexArray1, transmision1);
+    std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
+    // Transmission 2.
+    std::vector<int> indexArray2(transmision2.size() * 2, 0);
+    palindromeInfo = longestPalindromeSubStr(indexArray2, transmision2);
+    std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
+    // Longest Common Substring.
     std::vector<long> xd;
-
     lcs(transmision1, transmision2);
     return 0;
 }
