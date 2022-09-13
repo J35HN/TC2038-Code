@@ -11,6 +11,9 @@ Fecha de creación y modificación: 10/09/2022 - XX/09/2022
 #include <sstream>
 #include <fstream>
 
+#include "lcs.cpp"
+#include "kmp.cpp"
+
 /**
  * @brief Store the contents of a file into a string.
  * 
@@ -105,6 +108,21 @@ int main (int argc, char *argv[])
     openSuccess = openFileAndStoreInVar(mcode1, "mcode1.txt"); if(openSuccess == 0){return 0;}
     openSuccess = openFileAndStoreInVar(mcode2, "mcode2.txt"); if(openSuccess == 0){return 0;}
     openSuccess = openFileAndStoreInVar(mcode3, "mcode3.txt"); if(openSuccess == 0){return 0;}
+
+
+    std::vector<std::string> transmissions{transmision1, transmision2};
+    std::vector<std::string> mcodes{mcode1, mcode2, mcode3};
+
+    for (int i = 0; i < transmissions.size(); i++) {
+        for (int j = 0; j < mcodes.size(); j++) {
+            std::string contains = kmp(transmissions[i], mcodes[j]) ? "true" : "false";
+            std::cout << "Transmission " << i + 1 << " contains malicious code " << j + 1 << ": " << contains << std::endl;  
+        }
+    }
     
+
+    std::vector<long> xd;
+
+    lcs(transmision1, transmision2);
     return 0;
 }
