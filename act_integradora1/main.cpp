@@ -5,7 +5,7 @@ Descripción: Primera actividad integradora, involucrando
 Autores: 
 - Luis David Lopez Magaña | A00344656
 - Jeshua Nava Avila | A01639282
-Fecha de creación y modificación: 10/09/2022 - XX/09/2022
+Fecha de creación y modificación: 10/09/2022 - 13/09/2022
 */
 #include <iostream>
 #include <vector>
@@ -13,11 +13,11 @@ Fecha de creación y modificación: 10/09/2022 - XX/09/2022
 #include <sstream>
 #include <fstream>
 
-#include "lcs.cpp"
-#include "kmp.cpp"
+#include "lcs.h"
+#include "kmp.h"
 
 /**
- * @brief Store the contents of a file into a string.
+ * @brief Stores the contents of a file into a string.
  * 
  * @param str String which will have the values of a file.
  * @param path The path of the file to open.
@@ -45,7 +45,7 @@ int openFileAndStoreInVar (std::string& str, std::string path)
 /**
  * @brief Inserts special characters to a string, for the use in Manacher Algorithm.
  * 
- * @param str String wich we inser the special characters.
+ * @param str String in which we insert the special characters.
  * @return string New string with special characters.
  * Complexity: O(n).
  */
@@ -134,9 +134,10 @@ int main (int argc, char *argv[])
     for (int i = 0; i < transmissions.size(); i++) {
         for (int j = 0; j < mcodes.size(); j++) {
             std::string contains = kmp(transmissions[i], mcodes[j]) ? "true" : "false";
-            std::cout << "Transmission " << i + 1 << " contains malicious code " << j + 1 << ": " << contains << std::endl;  
+            std::cout << contains << std::endl;  
         }
     }
+
     // Longest Palindrome.
     // Transmission 1.
     std::vector<int> indexArray1(transmision1.size() * 2, 0);
@@ -146,8 +147,8 @@ int main (int argc, char *argv[])
     std::vector<int> indexArray2(transmision2.size() * 2, 0);
     palindromeInfo = longestPalindromeSubStr(indexArray2, transmision2);
     std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
+
     // Longest Common Substring.
-    std::vector<long> xd;
     lcs(transmision1, transmision2);
     return 0;
 }

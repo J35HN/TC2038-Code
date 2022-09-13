@@ -1,0 +1,11 @@
+Actividad Integradora 1.
+
+Autores: 
+Luis David Lopez Magaña | A00344656
+-   Función generadora del LPS (Longest proper Prefix that is also a Sufix)
+-   Función que implementa el algoritmo KMP para determinar la existencia
+    del patrón dentro de la secuencia principal
+-   Función que determina el substring más largo que comparten dos strings
+    (Longest Common Substring)
+    
+Jeshua Nava Avila | A01639282

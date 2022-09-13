@@ -2,6 +2,13 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief Finds the largest common substring between two sequences.
+ * 
+ * @param str1 First string to check
+ * @param str2 Second string to check
+ * Complexity: O(n*m), where n and m are the string sizes.
+ */
 void lcs(std::string str1, std::string str2) {
 
     std::vector<std::vector<long>> dp;
@@ -36,8 +43,7 @@ void lcs(std::string str1, std::string str2) {
         }
     }
 
-    std::cout << "Max substring length: " << max << std::endl;
-    std::cout << "String 1: " << startPosition1 << " - " << endPosition1 << std::endl;
-    std::cout << "String 2: " << startPosition2 << " - " << endPosition2 << std::endl;
+    std::cout << startPosition1 << " " << endPosition1 << std::endl;
+    std::cout << startPosition2 << " " << endPosition2 << std::endl;
 }
  
