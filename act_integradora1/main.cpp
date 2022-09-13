@@ -2,7 +2,9 @@
 Nombre: Actividad Integradora 1.
 Descripción: Primera actividad integradora, involucrando 
                 algoritmos de busqueda de strings.
-Autor: Jeshua Nava Avila | A01639282
+Autores: 
+- Luis David Lopez Magaña | A00344656
+- Jeshua Nava Avila | A01639282
 Fecha de creación y modificación: 10/09/2022 - XX/09/2022
 */
 #include <iostream>
