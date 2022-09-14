@@ -9,3 +9,6 @@ Luis David Lopez Magaña | A00344656
     (Longest Common Substring)
     
 Jeshua Nava Avila | A01639282
+-   Función manacher para encontrar el subtring palíndromo más grande.
+-   Archivos de transmisión y mcode.
+-   Lectura de archivos.

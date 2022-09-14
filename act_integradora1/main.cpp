@@ -15,6 +15,7 @@ Fecha de creación y modificación: 10/09/2022 - 13/09/2022
 
 #include "lcs.h"
 #include "kmp.h"
+#include "manacher.h"
 
 /**
  * @brief Stores the contents of a file into a string.
@@ -42,76 +43,6 @@ int openFileAndStoreInVar (std::string& str, std::string path)
         }
 }
 
-/**
- * @brief Inserts special characters to a string, for the use in Manacher Algorithm.
- * 
- * @param str String in which we insert the special characters.
- * @return string New string with special characters.
- * Complexity: O(n).
- */
-std::string convertString (std::string str)
-{
-    std::string newStr = "@";
-    for (int i = 0; i < str.size(); i++)
-    {
-        newStr += "#" + str.substr(i, 1);
-    }
-
-    newStr += "#$";
-    return newStr;
-}
-
-/**
- * @brief Manacher algorithm for longest palindrome substring.
- * 
- * @param indexArray Array for index palindrome values.
- * @param str String from where we find a palindrome.
- * @return vector<int> Vector with the index position of the palindrom and its lenght.
- * Complexity: O(n).
- */
-std::vector<int> longestPalindromeSubStr(std::vector<int>& indexArray, std::string str)
-{
-    std::string newStr = convertString(str);
-    std::vector<int> palindromeInfo(2, 0);
-    int center = 0, right = 0;
-    int maxPalindrome = 0, centerIndex = 0;
-    for (int i = 1; i < newStr.size() - 1; i++)
-    {
-        // Update mirror index.
-        int iMirror = center - (i - center);
-
-        if (right > i)
-        {
-            indexArray[i] = std::min(right - i, indexArray[iMirror]);
-        }
-
-        while (newStr[i + 1 + indexArray[i]] == newStr[i - 1 - indexArray[i]])
-        {
-            indexArray[i] = indexArray[i] + 1;
-        }
-        // Update center and right index.
-        if (i + indexArray[i] > right)
-        {
-            center = i;
-            right = i + indexArray[i];
-        }
-    }
-
-    // Find the longest palindrome index value.
-    for (int i = 1; i < newStr.size() - 1; i++)
-    {
-        if (indexArray[i] > maxPalindrome)
-        {
-            maxPalindrome = indexArray[i];
-            centerIndex = i;
-        }
-    }
-    // Store values of index and length.
-    palindromeInfo[0] = (centerIndex - 1 - maxPalindrome) / 2; // Adjust to offset.
-    palindromeInfo[1] = maxPalindrome;
-    //str.substr( (centerIndex - 1 - maxPalindrome) / 2, maxPalindrome);
-    return palindromeInfo;
-}
 
 int main (int argc, char *argv[])
 {
@@ -141,13 +72,12 @@ int main (int argc, char *argv[])
     // Longest Palindrome.
     // Transmission 1.
     std::vector<int> indexArray1(transmision1.size() * 2, 0);
-    palindromeInfo = longestPalindromeSubStr(indexArray1, transmision1);
+    palindromeInfo = manacher(indexArray1, transmision1);
     std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
     // Transmission 2.
     std::vector<int> indexArray2(transmision2.size() * 2, 0);
-    palindromeInfo = longestPalindromeSubStr(indexArray2, transmision2);
+    palindromeInfo = manacher(indexArray2, transmision2);
     std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
-
     // Longest Common Substring.
     lcs(transmision1, transmision2);
     return 0;
