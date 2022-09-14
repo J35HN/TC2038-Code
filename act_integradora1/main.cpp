@@ -71,11 +71,11 @@ int main (int argc, char *argv[])
 
     // Longest Palindrome.
     // Transmission 1.
-    std::vector<int> indexArray1(transmision1.size() * 2, 0);
+    std::vector<long> indexArray1(transmision1.size() * 3, 0);
     palindromeInfo = manacher(indexArray1, transmision1);
     std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
     // Transmission 2.
-    std::vector<int> indexArray2(transmision2.size() * 2, 0);
+    std::vector<long> indexArray2(transmision2.size() * 3, 0);
     palindromeInfo = manacher(indexArray2, transmision2);
     std::cout << palindromeInfo[0] << " " << palindromeInfo[0] + palindromeInfo[1] - 1 << std::endl;
     // Longest Common Substring.

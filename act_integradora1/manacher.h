@@ -28,7 +28,7 @@ std::string convertString (std::string str)
  * @return vector<int> Vector with the index position of the palindrom and its lenght.
  * Complexity: O(n).
  */
-std::vector<int> manacher(std::vector<int>& indexArray, std::string str)
+std::vector<int> manacher(std::vector<long>& indexArray, std::string str)
 {
     std::string newStr = convertString(str);
     std::vector<int> palindromeInfo(2, 0);
@@ -41,9 +41,8 @@ std::vector<int> manacher(std::vector<int>& indexArray, std::string str)
 
         if (right > i)
         {
-            indexArray[i] = std::min(right - i, indexArray[iMirror]);
+            indexArray[i] = std::min(long(right - i), indexArray[iMirror]);
         }
-
         while (newStr[i + 1 + indexArray[i]] == newStr[i - 1 - indexArray[i]])
         {
             indexArray[i] = indexArray[i] + 1;
@@ -69,5 +68,6 @@ std::vector<int> manacher(std::vector<int>& indexArray, std::string str)
     palindromeInfo[0] = (centerIndex - 1 - maxPalindrome) / 2; // Adjust to offset.
     palindromeInfo[1] = maxPalindrome;
     //str.substr( (centerIndex - 1 - maxPalindrome) / 2, maxPalindrome);
+    
     return palindromeInfo;
 }
