@@ -32,15 +32,6 @@ int main(int argc, char *argv[])
     std::cin >> m;
     // Store m amount of words.
     readData(wordsToSearch, m);
-    // Print results.
-    for (int i = 0; i < n; i++)
-    {
-        std::cout << wordsInTrie[i] << " ";
-    }
-    std::cout << std::endl;
-    for (int i = 0; i < m; i++)
-    {
-        std::cout << wordsToSearch[i] << " ";
-    }
+
     return 0;
 }
