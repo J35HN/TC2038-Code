@@ -1,0 +1,12 @@
+5
+car
+cars
+cat
+cats
+catastrophe
+5
+can
+carros
+cats
+catastrophes
+carpets
