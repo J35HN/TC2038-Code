@@ -8,6 +8,16 @@ Fecha de creación y modificación: 05/10/2022 - XX/10/2022
 #include <iostream>
 #include <vector>
 
+void readData (std::vector<std::string>& list, int n)
+{
+    std::string word;
+    for (int i = 0; i < n; i++)
+    {
+        std::cin >> word;
+        list.push_back(word);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     int n = 0;
@@ -16,11 +26,7 @@ int main(int argc, char *argv[])
     // Read amount of words to insert.
     std::cin >> n;
     // Store n amount of words.
-    for (int i = 0; i < n; i++)
-    {
-        std::cin >> word;
-        wordsInTrie.push_back(word);
-    }
+    readData(wordsInTrie, n);
     // Print results.
     for (int i = 0; i < n; i++)
     {
