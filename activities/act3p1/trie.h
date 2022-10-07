@@ -20,7 +20,7 @@ struct TrieNode *getEmptyNode(void)
     return emptyNode;
 }
 
-// Function to insert a node in the trie.
+// Function to insert a node in a trie.
 void insertNode (struct TrieNode *root, std::string str)
 {
     struct TrieNode *tempNode = root; // Take reference.
@@ -37,4 +37,26 @@ void insertNode (struct TrieNode *root, std::string str)
         tempNode = tempNode -> children[letterIndex]; // Move to node at letterIndex;
     }
     tempNode -> wordEndsHere = true; // Mark last node as the end of a word.
+}
+
+// Function to search a word in a trie.
+bool searchWord (struct TrieNode *root, std::string str)
+{
+    struct TrieNode *tempNode = root; // Take reference.
+    // Iterate over each character.
+    int strLength = str.length();
+    for (int i = 0; i < strLength; i++)
+    {
+        int letterIndex = str[i] - 'a'; // Obtain the character's index.
+        // If NULL appears at the index, return false (character is not there).
+        // If not, avance to the character's existing node.
+        if (tempNode -> children[letterIndex] == NULL)
+        {
+            return false;
+        }
+        tempNode = tempNode -> children[letterIndex];
+    }
+    // If we are at the last character in the string, and it's 'wordEndsHere', return it's value.
+    // Also double check that the current node is not NULL.
+    return (tempNode -> wordEndsHere && tempNode != NULL);
 }
