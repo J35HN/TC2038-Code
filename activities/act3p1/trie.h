@@ -19,3 +19,22 @@ struct TrieNode *getEmptyNode(void)
     }
     return emptyNode;
 }
+
+// Function to insert a node in the trie.
+void insertNode (struct TrieNode *root, std::string str)
+{
+    struct TrieNode *tempNode = root; // Take reference.
+    // Add each character to its proper place.
+    int strLength = str.length();
+    for (int i = 0; i < strLength; i++)
+    {
+        int letterIndex = str[i] - 'a'; // Obtains the index of the str[i] character in the english alphabet (a = 0, b = 1...).
+        // If a character is not at the index, create a new node.
+        if (!tempNode -> children[letterIndex])
+        {
+            tempNode -> children[letterIndex] = getEmptyNode();
+        }
+        tempNode = tempNode -> children[letterIndex]; // Move to node at letterIndex;
+    }
+    tempNode -> wordEndsHere = true; // Mark last node as the end of a word.
+}
