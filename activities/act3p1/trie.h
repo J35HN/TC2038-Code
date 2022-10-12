@@ -49,7 +49,7 @@ void insertNode(TrieNode *root, std::string str)
 }
 
 /**
- * @brief Function that searches for a word in  a trie.
+ * @brief Function that searches for a word in a trie.
  * 
  * @param root Root of the current subtree.
  * @param str Word to search for in the trie.
