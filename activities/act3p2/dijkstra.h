@@ -3,9 +3,10 @@
 
 using std::vector;
 
-vector<vector<int>> dijkstraAlgorithm(vector<vector<int>> graph){
-  vector<vector<int>> results;
+int INF = INT_MAX;
+
+vector<int> dijkstraAlgorithm(vector<vector<int>> graph, int sourceNode){
+  vector<int> results( graph[0].size(), INF);
   
-  results = graph;
   return results;
 }
