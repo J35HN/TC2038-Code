@@ -9,9 +9,11 @@ int obtainNearestNode(int totalNodes, vector<bool> visitedNodes, vector<int> dis
 {
   int minDistance = INF;
   int nearestNode = 0;
+  // Iterate to each node, to determine which one is the closest one.
   for (int i = 0; i < totalNodes; i++)
   {
-    if (visitedNodes[i] != true && ( distances[i] < minDistance))
+    // Check that the node has not been visited.
+    if (visitedNodes[i] != true && (distances[i] <= minDistance))
     {
       minDistance = distances[i];
       nearestNode = i;
@@ -28,7 +30,16 @@ vector<int> dijkstraAlgorithm(vector<vector<int>> graph, int sourceNode){
   for (int i = 0; i < graph[0].size(); i++)
   {
     int nearestNode = obtainNearestNode(graph[0].size(), visitedNodes, distanceResults);
+    visitedNodes[nearestNode] = true; // Mark the node obtained as visited.
+    // Visit adjacent nodes to our nearest node obtained.
+    for (int j = 0; j < graph[0].size(); j++)
+    {
+      // Examine that it is an adjacent node.
+      if (graph[nearestNode][j] != -1 && distanceResults[j] > distanceResults[nearestNode] + graph[nearestNode][j])
+      {
+        distanceResults[j] = distanceResults[nearestNode] + graph[nearestNode][j];
+      }
+    }
   }
-
   return distanceResults;
 }

@@ -21,7 +21,8 @@ int main(int argc, char *argv[]) {
   cin >> n;
   // Init square matrix and result matrix.
   vector<vector<int>> matrix(n, vector<int>(n));
-  vector<int> dijkstraResultMatrix = matrix[0];
+  vector<vector<int>> dijkstraResultMatrix = matrix;
+  vector<int> dijkstraResultArray = matrix[0];
 
   // insert values in matrix.
   for (int i = 0; i < n; i++) {
@@ -31,16 +32,24 @@ int main(int argc, char *argv[]) {
   }
 
   // Compute results.
-  dijkstraResultMatrix = dijkstraAlgorithm(matrix, 0);
-
-  /*
+  /// Dijkstra.
+  for (int node = 0; node < matrix[0].size(); node++)
+  {
+    dijkstraResultArray = dijkstraAlgorithm(matrix, node);
+    dijkstraResultMatrix[node] = dijkstraResultArray;
+  }
+  
+  // Print results.
+  /// Dijkstra.
   for (int i = 0; i < n; i++) {
-    cout << std::endl;
     for (int j = 0; j < n; j++) {
-      cout << " " << matrix[i][j];
+      if (i != j)
+      {
+        cout << "node " << i+1 << " to node " << j+1 << " : " << dijkstraResultMatrix[i][j];
+        cout << std::endl;
+      }
     }
   }
-  */
 
   return 0;
 }
