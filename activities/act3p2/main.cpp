@@ -2,7 +2,7 @@
 Nombre: Actividad 3.2 - Implementación de "Dijkstra and Floyd".
 Descripción: 
 Autor: Jeshua Nava Avila | A01639282
-Fecha de creación y modificación: 07/10/2022 - XX/10/2022
+Fecha de creación y modificación: 07/10/2022 - 14/10/2022
 */
 #include <iostream>
 #include <vector>
@@ -33,10 +33,11 @@ int main(int argc, char *argv[]) {
 
   // Compute results.
   /// Dijkstra.
+  /// For each node, compute its shortest path for the graph.
   for (int node = 0; node < matrix[0].size(); node++)
   {
-    dijkstraResultArray = dijkstraAlgorithm(matrix, node);
-    dijkstraResultMatrix[node] = dijkstraResultArray;
+    dijkstraResultArray = dijkstraAlgorithm(matrix, node); // Obtain the array of its shortest path.
+    dijkstraResultMatrix[node] = dijkstraResultArray; // Insert the array into a matrix of results.
   }
   
   // Print results.
