@@ -16,7 +16,7 @@ using std::vector;
 
 int main(int argc, char *argv[])
 {
-    int N = 0, W = 0;
+    int N = 0, W = 0, value = 0;
     // Init vectors.
     vector<int> elementValues;
     vector<int> elementWeights;
@@ -34,19 +34,9 @@ int main(int argc, char *argv[])
     }
     cin >> W;
 
-    // Print values.
-    cout << "N : " << N << std::endl;
-    cout << "W : " << W << std::endl;
-    cout << "Values of elements: ";
-    for (int i = 0; i < N; i++)
-    {
-        cout << elementValues[i] << " ";
-    }
-    cout << std::endl << "Values of weights: ";
-    for (int i = 0; i < N; i++)
-    {
-        cout << elementWeights[i] << " ";
-    }
+    // Compute value
+    value = KnapsackAlgorith(elementValues, elementWeights, W);
+    cout << value;
 
     return 0;
 }
