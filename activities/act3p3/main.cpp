@@ -17,5 +17,33 @@ int main(int argc, char *argv[])
     // Init vectors.
     vector<int> valuesOfElements;
     vector<int> weightsOfElements;
+    // Read values from txt file.
+    cin >> N;
+    for (int i = 0; i < N; i++)
+    {
+        cin >> W;
+        valuesOfElements.push_back(W);
+    }
+    for (int i = 0; i < N; i++)
+    {
+        cin >> W;
+        weightsOfElements.push_back(W);
+    }
+    cin >> W;
+
+    // Print values.
+    cout << "N : " << N << std::endl;
+    cout << "W : " << W << std::endl;
+    cout << "Values of elements: ";
+    for (int i = 0; i < N; i++)
+    {
+        cout << valuesOfElements[i] << " ";
+    }
+    cout << std::endl << "Values of weights: ";
+    for (int i = 0; i < N; i++)
+    {
+        cout << weightsOfElements[i] << " ";
+    }
+
     return 0;
 }
