@@ -7,7 +7,8 @@ Gael Rodriguez Gomez | A01639279
 Fecha de creación y modificación: 15/10/2022 - XX/10/2022
 */
 #include <iostream>
-#include <vector>
+
+#include "knapsack_algorithm.h"
 
 using std::cin;
 using std::cout;
@@ -17,19 +18,19 @@ int main(int argc, char *argv[])
 {
     int N = 0, W = 0;
     // Init vectors.
-    vector<int> valuesOfElements;
-    vector<int> weightsOfElements;
+    vector<int> elementValues;
+    vector<int> elementWeights;
     // Read values from txt file.
     cin >> N;
     for (int i = 0; i < N; i++)
     {
         cin >> W;
-        valuesOfElements.push_back(W);
+        elementValues.push_back(W);
     }
     for (int i = 0; i < N; i++)
     {
         cin >> W;
-        weightsOfElements.push_back(W);
+        elementWeights.push_back(W);
     }
     cin >> W;
 
@@ -39,12 +40,12 @@ int main(int argc, char *argv[])
     cout << "Values of elements: ";
     for (int i = 0; i < N; i++)
     {
-        cout << valuesOfElements[i] << " ";
+        cout << elementValues[i] << " ";
     }
     cout << std::endl << "Values of weights: ";
     for (int i = 0; i < N; i++)
     {
-        cout << weightsOfElements[i] << " ";
+        cout << elementWeights[i] << " ";
     }
 
     return 0;
