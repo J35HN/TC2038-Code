@@ -1,7 +1,9 @@
 /*
 Nombre: Actividad 3.3 - Implementación de "Knapsack problem".
 Descripción: Programa que resuelva el problema de la mochila (Knapsack problem)
-Autor: Jeshua Nava Avila | A01639282
+Autores: 
+Jeshua Nava Avila | A01639282
+Gael Rodriguez Gomez | A01639279
 Fecha de creación y modificación: 15/10/2022 - XX/10/2022
 */
 #include <iostream>
