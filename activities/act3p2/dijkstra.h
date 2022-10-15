@@ -59,5 +59,13 @@ vector<int> dijkstraAlgorithm(vector<vector<int>> graph, int sourceNode){
       }
     }
   }
+  // Change INF values to -1.
+  for (int i = 0; i < distanceResults.size(); i++)
+  {
+    if (distanceResults[i] == INF)
+    {
+      distanceResults[i] = -1;
+    }
+  }
   return distanceResults;
 }
