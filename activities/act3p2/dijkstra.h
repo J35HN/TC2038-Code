@@ -22,7 +22,7 @@ int obtainNearestNode(int totalNodes, vector<bool> visitedNodes, vector<int> dis
   for (int i = 0; i < totalNodes; i++)
   {
     // Check that the node has not been visited.
-    if (visitedNodes[i] != true && (distances[i] <= minDistance))
+    if (visitedNodes[i] != true && (distances[i] <= minDistance) && distances[i] != -1)
     {
       minDistance = distances[i];
       nearestNode = i;
@@ -53,7 +53,7 @@ vector<int> dijkstraAlgorithm(vector<vector<int>> graph, int sourceNode){
     for (int j = 0; j < graph[0].size(); j++)
     {
       // Examine that it is an adjacent node, and only update if our new distance to the next node is lower than previous.
-      if (graph[nearestNode][j] != -1 && distanceResults[j] > distanceResults[nearestNode] + graph[nearestNode][j])
+      if ((graph[nearestNode][j] != -1 && distanceResults[nearestNode] != INF)&&distanceResults[j] > distanceResults[nearestNode] + graph[nearestNode][j])
       {
         distanceResults[j] = distanceResults[nearestNode] + graph[nearestNode][j]; // Update value.
       }
