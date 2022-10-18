@@ -4,11 +4,17 @@ Descripción: Programa que resuelva el problema de la mochila (Knapsack problem)
 Autores: 
 Jeshua Nava Avila | A01639282
 Gael Rodriguez Gomez | A01639279
-Fecha de creación y modificación: 15/10/2022 - XX/10/2022
+Fecha de creación y modificación: 15/10/2022 - 18/10/2022
+
+* Compilacion (Replit):
+    g++ -std=c++17 -g -o main *.cpp
+* Ejecucion (Replit):
+    ./main < pruebaN.txt
+
 */
 #include <iostream>
 
-#include "knapsack_algorithm.h"
+#include "knapsack_Algorithm.h"
 
 using std::cin;
 using std::cout;

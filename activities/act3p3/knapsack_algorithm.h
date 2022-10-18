@@ -2,6 +2,15 @@
 
 using std::vector;
 
+/**
+ * @brief Returns the maximum amount of value that can be carried given weight and value vectors as well as a weight limit.
+ * 
+ * @param elementValues The values of the items.
+ * @param elementWeights The corresponding weights of the items.
+ * @param maxWeight The max weight that can be carried.
+ * @return int Maximum value carryable.
+ * Complexity: O(NW), where N is the number of items and W is the maximum weight to carry.
+ */
 int KnapsackAlgorith(vector<int> elementValues, vector<int> elementWeights, int maxWeight)
 {
     int value1 = 0, value2 = 0, value = 0;
