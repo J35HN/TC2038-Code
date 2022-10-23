@@ -7,7 +7,16 @@ using std::pair;
 using namespace std;
 
 
-// O(n)
+/**
+ * @brief Merge algorithm from Merge Sort. Sorts from largest to smallest.
+ * 
+ * @param numbers Vector of integer tuples, where we sort merge evaluating the second integer in the pair.
+ * @param left Value of the left limit index.
+ * @param middle Value of the middle index.
+ * @param right Value of the right limit index.
+ * @return vector<pair<int, int>> A vector of integer tuples sorted.
+ * Complexity: O(n).
+ */
 vector<pair<int, int>> merge(vector<pair<int, int>> & numbers, int left, int middle, int right) {
     int leftLimit = middle - left + 1;
     int rightLimit = right - middle;
@@ -49,7 +58,15 @@ vector<pair<int, int>> merge(vector<pair<int, int>> & numbers, int left, int mid
     return numbers;
 }
 
-// O(log (n))
+/**
+ * @brief Merge Sort algorithm. Divides the list into sub-vectors, and sorts from largest to smallest.
+ * 
+ * @param numbers Vector of integer tuples.
+ * @param left Value of the starting index of the vector.
+ * @param right Value of the last index of the vector.
+ * @return vector<pair<int, int>> 
+ * Complexity: O (log(n)).
+ */
 vector<pair<int, int>> mergeSort(vector<pair<int, int>> & numbers, int left, int right) {
     if (left < right) {
         int middle = left + (right - left) / 2;
