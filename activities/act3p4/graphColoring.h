@@ -79,7 +79,13 @@ vector<pair<int, int>> mergeSort(vector<pair<int, int>> & numbers, int left, int
 
 
 
-
+/**
+ * @brief Finds the degree value of nodes in a adyacent matrix graph.
+ * 
+ * @param graph Matrix of the graph.
+ * @return vector<pair<int, int>> Vector of tuples ordered from higher to lower degree value corresponding to the index node.
+ * Complexity: O(log(n) + n^2).
+ */
 vector<pair<int, int>> sortByDegree(vector<vector<int>> graph){
   vector<pair<int, int>> results;
   for(int i = 0; i < graph.size(); i++){
