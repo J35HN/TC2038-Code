@@ -77,10 +77,8 @@ vector<pair<int, int>> mergeSort(vector<pair<int, int>> & numbers, int left, int
     return numbers;
 }
 
-
-
 /**
- * @brief Finds the degree value of nodes in a adyacent matrix graph.
+ * @brief Finds the degree value of nodes in a adyacent matrix graph.z
  * 
  * @param graph Matrix of the graph.
  * @return vector<pair<int, int>> Vector of tuples ordered from higher to lower degree value corresponding to the index node.
@@ -88,38 +86,57 @@ vector<pair<int, int>> mergeSort(vector<pair<int, int>> & numbers, int left, int
  */
 vector<pair<int, int>> sortByDegree(vector<vector<int>> graph){
   vector<pair<int, int>> results;
+  // Traverse each node.
   for(int i = 0; i < graph.size(); i++){
     int degree = 0;
+    // Add the corresponding value conections to degree.
     for(int j = 0; j < graph.size(); j++){
       degree += graph[i][j];
     }
+    // Add into a tuple the index value of the node and the degree value.
     pair<int, int> newPair = {i, degree};
     results.push_back(newPair);
   }
+  // Sort from largest to smalles value in degree.
   results = mergeSort(results, 0, results.size());
   return results;
 }
 
-
+/**
+ * @brief Colors a graph (adyacent matirx) with the least amount of colors.
+ *
+ * @param graph Matrix of the graph.
+ * Average Complexity: O(n^2). Worst Case: O(n^3)  
+ */
 void graphColoring(vector<vector<int>> graph){
+  // Init vector of tuples. First value is the index of a node, second values it's their degree.
   vector<pair<int, int>> degrees = sortByDegree(graph);
   vector<int> colors (graph.size(), -1);
   int currentLastColor = 1;
-
+  // Iterate each node.
   for(int i = 0; i < graph.size(); i++){
-    if(colors[degrees[i].first] == -1){
+    if(colors[degrees[i].first] == -1){ // Assing color to i index if color in index i is -1.
       colors[degrees[i].first] = currentLastColor;
       currentLastColor++;
       for(int j = 0; j < graph[degrees[i].first].size(); j++){
+        // If the node isn't colored and is not connected to the pivot.
         if(colors[j] == -1 && graph[degrees[i].first][j] == 0){
-          colors[j] = colors[degrees[i].first];
-          cout << "nodo " << j+1 << " color de " << i+1 << endl;
+          bool isValidToColor = true;
+          // Check if there's other node with the same color connected to the node index i.
+          for(int k = 0; k < graph.size(); k++){
+            if(colors[k] == colors[degrees[i].first] && graph[j][k] == 1){
+              isValidToColor = false;
+            }
+          }
+          if(isValidToColor){
+            colors[j] = colors[degrees[i].first];
+          }
         }
       }
     }
   }
 
   for(int k = 0; k < colors.size(); k++){
-    cout << "Color del nodo " << k+1 << ": " <<colors[k] << endl;
+    cout << "Node: " << k << ", Assigned Color: " <<colors[k] << endl;
   }
 }
