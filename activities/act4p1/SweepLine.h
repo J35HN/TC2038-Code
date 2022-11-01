@@ -1,0 +1,10 @@
+#include <vector>
+#include <iostream>
+#include <string>
+#include <sstream>
+using std::vector;
+using std::string;
+using std::pair;
+using std::cout;
+using std::cin;
+using std::endl;
