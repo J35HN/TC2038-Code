@@ -115,6 +115,7 @@ void graphColoring(vector<vector<int>> graph){
   int currentLastColor = 1;
   // Iterate each node.
   for(int i = 0; i < graph.size(); i++){
+    cout << degrees[i].first;
     if(colors[degrees[i].first] == -1){ // Assing color to i index if color in index i is -1.
       colors[degrees[i].first] = currentLastColor;
       currentLastColor++;
@@ -137,6 +138,6 @@ void graphColoring(vector<vector<int>> graph){
   }
 
   for(int k = 0; k < colors.size(); k++){
-    cout << "Node: " << k << ", Assigned Color: " <<colors[k] << endl;
+    cout << "Node: " << k+1 << ", Assigned Color: " <<colors[k] << endl;
   }
 }

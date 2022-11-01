@@ -65,12 +65,10 @@ using std::vector;
 
 int main() {
   int n = 0;
-
   // Read values from txt file.
   cin >> n;
   // Init square matrix
   vector<vector<int>> graph(n, vector<int>(n));
-
   // insert values in matrix.
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
@@ -80,5 +78,5 @@ int main() {
 
   // Compute values
   graphColoring(graph);
-
+  cout << "a";
 }
