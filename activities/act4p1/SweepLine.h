@@ -128,7 +128,7 @@ int sweepLine(vector<Line> lines) {
         bool flag = false;
         for (auto it = Status.begin(); it != Status.end(); it++)
         {
-
+          Status.
         }
       }
     } else if (currentPoint.isIntersection == true) // Intersection point.
