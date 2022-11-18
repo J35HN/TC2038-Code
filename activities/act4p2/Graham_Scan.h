@@ -19,7 +19,7 @@ void printStack(stack<Point> polygon) {
   int polygonSize = polygon.size();
   vector<Point> polygonCounterClockwise;
 
-  cout << "=== Convex Hull ===" << endl;
+  // cout << "=== Convex Hull ===" << endl;
 
   for (int i = 0; i < polygonSize; i++) {
     polygonCounterClockwise.push_back(polygon.top());
